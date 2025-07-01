@@ -1,6 +1,12 @@
 Just a fun little to-do list project that suits my needs.
 
-Some initial ideas for this app:
+Some ideas for the app:
 
-      -constant reminders with push notification (i always forget stuff),
-      -TBC
+      -Live update on my personal to-do list on that day and real-time update a task as "done" as i finish without me updating it on server.
+
+      -Powered by MongoDB Atlas(Because i will be using it to do various unrelated functions, so Non-relational   database is better for this need)
+            -P.S i will keep it local for now until the project is ready
+
+      -Auto CRUD operation on the website for any project i finished and deployed on vercel or different platforms i dont know(will need to look into the related APIs later)
+
+      -Possibly train a custom AI personal assistent with knowledge of all the projects i have done (extra function)
