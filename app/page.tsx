@@ -1,38 +1,40 @@
+"use client"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Form } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import ListItem from "@/component/ListItem";
+import { useState } from "react";
+
+type itemDetail  = {
+  checked: boolean;
+  description:string;
+}
 
 export default function Home() {
+
+  const [items, setItems] = useState<itemDetail[]>([])
+
+  const addItem = () => {
+    const emptyDetail = {checked: false, description:""}
+    setItems([...items, emptyDetail])
+  }
+
   return (
     <div className=" flex justify-center items-center  min-h-screen border-4 border-black ">
       <div className="text-wrap text-xl">
-        <Button className="w-20 h-5 text-sm">
+        <button className="w-20 h-5 text-sm"
+            onClick={addItem}>
           <p>
             Add items
           </p>
-        </Button>
-        <h1 className="">Henry's To-do List today</h1>
-        <div className="">
-          <Checkbox className="border-2xl mx-2 shadow-2xl" />
-          hello keith
-        </div>
-        <div className="">
-          <Checkbox className="border-2xl mx-2 shadow-2xl" />
-          keep saying hello keith
-        </div>
-        <div className="">
-          <Checkbox className="border-2xl mx-2 shadow-2xl" />
-          hello keith again
-        </div>
+        </button>
+        <h1 className="font-bold">Henry's To-do List today</h1>
+        {items.map((item, index) => (
+          <ListItem
+            key={index}
+            item={item}
+            index={index}
+            setItems={setItems}
+          />
+        ))}
       </div>
     </div>
   );
