@@ -13,14 +13,14 @@ export async function GET() {
     }
   }
 
-// POST /api/todos - Create a new todo
-export async function POST(request: NextRequest) {
-    try {
-      await connectToDatabase();
-      const { checkbox, body, priority } = await request.json();
-      const newTodo = await Todo.create({ checkbox, body, priority });
-      return NextResponse.json(newTodo, { status: 201 });
-    } catch (error) {
-      return NextResponse.json({ error: 'Failed to create todo' }, { status: 500 });
-    }
+  // POST /api/todos - Create a new todo
+ export async function POST(request: NextRequest) {
+  try {
+    await connectToDatabase();
+    const { checkbox, body, priority } = await request.json();
+    const newTodo = await Todo.create({ checkbox, body, priority });
+    return NextResponse.json(newTodo, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create todo' }, { status: 500 });
   }
+}

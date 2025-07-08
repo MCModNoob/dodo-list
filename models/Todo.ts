@@ -1,8 +1,10 @@
 
 import mongoose, { Schema, models, Model } from 'mongoose';
 import { Document } from 'mongoose';
+import { Types } from 'mongoose';
 
 export interface ITodo extends Document {
+    _id: Types.ObjectId;
     checkbox: boolean;
     body: string;
     priority?: string;

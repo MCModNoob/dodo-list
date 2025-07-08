@@ -1,7 +1,7 @@
 "use client"
 import { Checkbox } from "@/components/ui/checkbox"
 import ListItem from "@/component/ListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type itemDetail  = {
   checked: boolean;
@@ -10,12 +10,24 @@ type itemDetail  = {
 
 export default function Home() {
 
+  useEffect(() => {
+    getItems()
+  }, [])
+
   const [items, setItems] = useState<itemDetail[]>([])
 
   const addItem = () => {
     const emptyDetail = {checked: false, description:""}
     setItems([...items, emptyDetail])
   }
+
+const getItems = async () => {
+  const response = await fetch('/api/todos', {
+    method: 'GET',
+  })
+  const data = await response.json()
+  setItems(data)
+}
 
   return (
     <div className=" flex justify-center items-center  min-h-screen border-4 border-black ">
@@ -31,8 +43,6 @@ export default function Home() {
           <ListItem
             key={index}
             item={item}
-            index={index}
-            setItems={setItems}
           />
         ))}
       </div>
