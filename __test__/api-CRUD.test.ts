@@ -12,7 +12,7 @@ describe('DELETE /api/todos test', () => {
   beforeAll(async () => {
     await connectToDatabase();
 
-    // Insert a test todo
+
     const created = await Todo.create({
       body: 'Test todo for deletion',
       checkbox: false,
