@@ -17,8 +17,8 @@ export async function GET() {
  export async function POST(request: NextRequest) {
   try {
     await connectToDatabase();
-    const { checkbox, body, priority } = await request.json();
-    const newTodo = await Todo.create({ checkbox, body, priority });
+    const { checkbox, body } = await request.json();
+    const newTodo = await Todo.create({ checkbox, body });
     return NextResponse.json(newTodo, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to create todo' }, { status: 500 });

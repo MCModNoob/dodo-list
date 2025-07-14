@@ -7,7 +7,6 @@ export interface ITodo extends Document {
     _id: Types.ObjectId;
     checkbox: boolean;
     body: string;
-    priority?: string;
   }
 
 const TodoSchema = new Schema(
@@ -18,14 +17,8 @@ const TodoSchema = new Schema(
     },
     body: {
       type: String,
-      required: true,
-      trim: true,
+      required: false,
     },
-    priority: {
-      type: String,
-      enum: ['Low', 'Medium', 'High'],
-      default: 'Medium',
-    }
   },
   {
     timestamps: true,
